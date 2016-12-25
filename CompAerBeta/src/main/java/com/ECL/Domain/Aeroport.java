@@ -14,12 +14,9 @@ public class Aeroport implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
 	private String name;
 	private String code;
-	
-	
-	
+	private String ville;
 	
 	public Aeroport() {
 		super();

@@ -2,6 +2,7 @@ package com.ECL.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import com.ECL.Repository.AeroportRepository;
 @Transactional
 public class AeroportServiceImp implements AeroportService {
 	
+	@Autowired
 	private AeroportRepository aeroportRepository;
 
 	@Override
