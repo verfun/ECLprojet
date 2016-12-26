@@ -10,12 +10,16 @@ import javax.persistence.Id;
 @Entity
 public class Vol implements Serializable{
 	
+	
+	private static final long serialVersionUID = 174533238934244473L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private Aeroport aeroportDest;
 	private Aeroport aeroportOrig;
 	private Appareil appareil;
+	 
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,7 +45,4 @@ public class Vol implements Serializable{
 		this.appareil = appareil;
 	}
 	
-	
-	
-
 }

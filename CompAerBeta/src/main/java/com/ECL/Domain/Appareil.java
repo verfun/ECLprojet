@@ -1,15 +1,18 @@
 package com.ECL.Domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Appareil implements Serializable{
+	
+	
+	private static final long serialVersionUID = 2678224974090028925L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -17,7 +20,7 @@ public class Appareil implements Serializable{
 	private String NumImmatriculation;
 	private TypeAppareil typeAppareil;
 	
-	private Vol vol;
+	private ArrayList<Vol> vol;
 
 	public Long getId() {
 		return id;
@@ -43,13 +46,15 @@ public class Appareil implements Serializable{
 		this.typeAppareil = typeAppareil;
 	}
 
-	public Vol getVol() {
+	public ArrayList<Vol> getVol() {
 		return vol;
 	}
 
-	public void setVol(Vol vol) {
+	public void setVol(ArrayList<Vol> vol) {
 		this.vol = vol;
 	}
+
+	
 	
 	
 

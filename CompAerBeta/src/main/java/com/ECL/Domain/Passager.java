@@ -1,6 +1,7 @@
 package com.ECL.Domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Passager implements Serializable {
+	
+	
+	private static final long serialVersionUID = 4077049059649819852L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,7 +23,7 @@ public class Passager implements Serializable {
 	private String email;
 	private String passwd;
 	private CarteCredit carteCredit;
-	
+	private ArrayList<Billet> billet;
 	
 	public Long getId() {
 		return id;
@@ -63,6 +67,13 @@ public class Passager implements Serializable {
 	public void setCarteCredit(CarteCredit carteCredit) {
 		this.carteCredit = carteCredit;
 	}
+	public ArrayList<Billet> getBillet() {
+		return billet;
+	}
+	public void setBillet(ArrayList<Billet> billet) {
+		this.billet = billet;
+	}
+	
 	
 	
 

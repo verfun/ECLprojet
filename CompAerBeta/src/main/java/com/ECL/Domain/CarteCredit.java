@@ -10,6 +10,9 @@ import javax.persistence.Id;
 @Entity
 public class CarteCredit implements Serializable {
 	
+
+	private static final long serialVersionUID = 4769863333332177731L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

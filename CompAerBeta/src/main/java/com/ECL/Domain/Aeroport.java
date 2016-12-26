@@ -11,6 +11,8 @@ import javax.persistence.Id;
 @Entity
 public class Aeroport implements Serializable{
 	
+	
+	private static final long serialVersionUID = 5383291231951611983L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -50,6 +52,14 @@ public class Aeroport implements Serializable{
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 	
 }
