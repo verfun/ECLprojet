@@ -2,12 +2,18 @@ package com.ECL.Domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Depart implements Serializable {
@@ -17,20 +23,28 @@ public class Depart implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	private Vol vol;
+	private Long departId;
 	private Date date;
 	private float duree;
-	private Pilote[] pilotes;
-	private EmployeeNav[] EmployeNav;
 	private Integer nbrTotalPlaces;
-	private ArrayList<Billet> billets;
 	private Float prix;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="volId")
+	private Vol vol;
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="departId")
+	private Collection<Pilote> pilotes;
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="departId")
+	private Collection<EmployeeNav> EmployeNav;
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="departId")
+	private Collection<Billet> billets;
 	public Long getId() {
-		return id;
+		return departId;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.departId = id;
 	}
 	public float getDuree() {
 		return duree;
@@ -44,16 +58,16 @@ public class Depart implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Pilote[] getPilotes() {
+	public Collection<Pilote> getPilotes() {
 		return pilotes;
 	}
-	public void setPilotes(Pilote[] pilotes) {
+	public void setPilotes(Collection<Pilote> pilotes) {
 		this.pilotes = pilotes;
 	}
-	public EmployeeNav[] getEmployeNav() {
+	public Collection<EmployeeNav> getEmployeNav() {
 		return EmployeNav;
 	}
-	public void setEmployeNav(EmployeeNav[] employeNav) {
+	public void setEmployeNav(Collection<EmployeeNav> employeNav) {
 		EmployeNav = employeNav;
 	}
 	public Integer getNbrTotalPlaces() {
@@ -62,10 +76,10 @@ public class Depart implements Serializable {
 	public void setNbrTotalPlaces(Integer nbrTotalPlaces) {
 		this.nbrTotalPlaces = nbrTotalPlaces;
 	}
-	public ArrayList<Billet> getBillets() {
+	public Collection<Billet> getBillets() {
 		return billets;
 	}
-	public void setBillets(ArrayList<Billet> billets) {
+	public void setBillets(Collection<Billet> billets) {
 		this.billets = billets;
 	}
 	public Float getPrix() {

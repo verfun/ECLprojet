@@ -2,11 +2,17 @@ package com.ECL.Domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Passager implements Serializable {
@@ -16,20 +22,23 @@ public class Passager implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long passagerId;
 	private String nom;
 	private String prenom;
 	private int age;
 	private String email;
 	private String passwd;
+	@OneToOne
 	private CarteCredit carteCredit;
-	private ArrayList<Billet> billet;
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="passagerId")
+	private Collection<Billet> billet;
 	
 	public Long getId() {
-		return id;
+		return passagerId;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.passagerId = id;
 	}
 	public String getEmail() {
 		return email;
@@ -67,10 +76,10 @@ public class Passager implements Serializable {
 	public void setCarteCredit(CarteCredit carteCredit) {
 		this.carteCredit = carteCredit;
 	}
-	public ArrayList<Billet> getBillet() {
+	public Collection<Billet> getBillet() {
 		return billet;
 	}
-	public void setBillet(ArrayList<Billet> billet) {
+	public void setBillet(Collection<Billet> billet) {
 		this.billet = billet;
 	}
 	

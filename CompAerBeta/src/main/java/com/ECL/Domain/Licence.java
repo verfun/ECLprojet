@@ -15,6 +15,11 @@ public class Licence implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String numero;
+	
+	public Licence(String numero) {
+		super();
+		this.numero = numero;
+	}
 	public Long getId() {
 		return id;
 	}

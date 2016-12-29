@@ -15,7 +15,7 @@ public class Aeroport implements Serializable{
 	private static final long serialVersionUID = 5383291231951611983L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long aeroportId;
 	private String name;
 	private String code;
 	private String ville;
@@ -24,18 +24,19 @@ public class Aeroport implements Serializable{
 		super();
 	}
 
-	public Aeroport(String name, String code) {
+	public Aeroport(String name, String code,String ville) {
 		super();
 		this.name = name;
 		this.code = code;
+		this.ville = ville;
 	}
 
 	public Long getId() {
-		return id;
+		return aeroportId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.aeroportId = id;
 	}
 
 	public String getName() {

@@ -2,10 +2,14 @@ package com.ECL.Domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Billet implements Serializable {
@@ -15,15 +19,19 @@ public class Billet implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private Integer billetId;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="passagerId")
 	private Passager passager;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="departId")
 	private Depart depart;
 	
 	public Integer getId() {
-		return id;
+		return billetId;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.billetId = id;
 	}
 	public Passager getPassager() {
 		return passager;
