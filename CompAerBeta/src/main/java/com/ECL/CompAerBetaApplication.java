@@ -19,16 +19,7 @@ public class CompAerBetaApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(CompAerBetaApplication.class, args);
 		
-		AeroportRepository aeRepository = ctx.getBean(AeroportRepository.class);
-		aeRepository.save(new Aeroport("casablanca","MD5","casablanca"));
-		aeRepository.save(new Aeroport("lyon","LYS","lyon"));
-		aeRepository.save(new Aeroport("london","LDN","london"));
-		EmployeeRepository emRepository = ctx.getBean(EmployeeRepository.class);
-		emRepository.save(new EmployeeNav("celen","garcia",new Date()
-				,"00341","hotesse",0));
-		emRepository.save(new Pilote("Rizki","Lahcen",new Date()
-				,"00341",0,new Licence("2301")));
-		aeRepository.findAll().forEach(p->System.out.println("aeroport "+p.getName()+" => "+p.getCode()));
+		
 		
 
 	}

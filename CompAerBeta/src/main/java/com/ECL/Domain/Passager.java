@@ -1,7 +1,6 @@
 package com.ECL.Domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;

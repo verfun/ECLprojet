@@ -1,7 +1,6 @@
 package com.ECL.Domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -14,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Depart implements Serializable {
@@ -30,12 +31,15 @@ public class Depart implements Serializable {
 	private Float prix;
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="volId")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Vol vol;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="departId")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Collection<Pilote> pilotes;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="departId")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Collection<EmployeeNav> EmployeNav;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="departId")

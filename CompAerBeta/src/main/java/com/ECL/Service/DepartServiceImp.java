@@ -1,5 +1,6 @@
 package com.ECL.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,18 @@ public class DepartServiceImp implements DepartService{
 	@Override
 	public Depart updateDepart(Depart depart) {
 		return departRepository.save(depart);
+	}
+	@Override
+	public List<Depart> findDeparsByDestinationAndOrigineCities
+	(String villeDest,String villeOrigin){
+		return departRepository
+				.findVolsByDestinationAndOrigineCities(villeDest, villeOrigin);
+	}
+	@Override
+	public List<Depart> findDeparsByDestinationAndOrigineCities
+	(String villeDest,String villeOrigin,Date date){
+		return departRepository
+				.findVolsByDestinationAndOrigineCities(villeDest, villeOrigin,date);
 	}
 
 }

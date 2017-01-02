@@ -42,6 +42,10 @@ public class AeroportServiceImp implements AeroportService {
 	}
 
 	@Override
+	public void deleteAeroport(Long id) {
+		 aeroportRepository.delete(id);;
+	}
+	@Override
 	public List<Aeroport> findAllAeroportByVille(String msn) {
 		// TO custmise
 		return null;

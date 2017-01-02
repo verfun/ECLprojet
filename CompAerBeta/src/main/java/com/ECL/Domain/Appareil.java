@@ -3,20 +3,18 @@ package com.ECL.Domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Appareil implements Serializable{
-	
 	
 	private static final long serialVersionUID = 2678224974090028925L;
 	
@@ -24,10 +22,12 @@ public class Appareil implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long appareilId;
 	private String NumImmatriculation;
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="typeAppareilId")
 	private TypeAppareil typeAppareil;
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	
+	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private Collection<Vol> vol;
 
 	public Long getId() {
@@ -61,9 +61,5 @@ public class Appareil implements Serializable{
 	public void setVol(ArrayList<Vol> vol) {
 		this.vol = vol;
 	}
-
-	
-	
-	
 
 }

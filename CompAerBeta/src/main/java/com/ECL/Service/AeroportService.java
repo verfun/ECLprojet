@@ -23,4 +23,6 @@ public interface AeroportService {
 
 	public abstract Aeroport getGreatestAeroportId();
 
+	void deleteAeroport(Long id);
+
 }
